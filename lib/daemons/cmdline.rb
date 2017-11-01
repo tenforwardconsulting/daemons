@@ -12,7 +12,7 @@ module Daemons
         opts.on('-t', '--ontop', 'Stay on top (does not daemonize)') do |t|
           @options[:ontop] = t
         end
-        
+
         opts.on('-s', '--shush', 'Silent mode (no output to the terminal)') do |t|
           @options[:shush] = t
         end
@@ -23,6 +23,10 @@ module Daemons
 
         opts.on('-n', '--no_wait', 'Do not wait for processes to stop') do |t|
           @options[:no_wait] = t
+        end
+
+        opts.on('-wTIME', '--force_kill_waittime=TIME', 'Set force kill timeout') do |t|
+          @options[:force_kill_waittime] = t.to_i
         end
 
         opts.separator ''
@@ -49,6 +53,7 @@ module Daemons
             -t, --ontop                      Stay on top (does not daemonize)
             -f, --force                      Force operation
             -n, --no_wait                    Do not wait for processes to stop
+            -w, --force_kill_waittime        Set force kill timeout
 
         Common options:
             -h, --help                       Show this message
@@ -62,7 +67,7 @@ END
     def parse(args)
       # The options specified on the command line will be collected in *options*.
       # We set default values here.
-      
+
       @opts.parse(args)
 
       @options
