@@ -25,7 +25,7 @@ module Daemons
           @options[:no_wait] = t
         end
 
-        opts.on('-wTIME', '--force_kill_waittime=TIME', 'Set force kill timeout') do |t|
+        opts.on('-wTIME', '--force_kill_waittime=TIME', 'Set force kill timeout (seconds)') do |t|
           @options[:force_kill_waittime] = t.to_i
         end
 
@@ -53,7 +53,7 @@ module Daemons
             -t, --ontop                      Stay on top (does not daemonize)
             -f, --force                      Force operation
             -n, --no_wait                    Do not wait for processes to stop
-            -w, --force_kill_waittime        Set force kill timeout
+            -w, --force_kill_waittime        Set force kill timeout (seconds)
 
         Common options:
             -h, --help                       Show this message
